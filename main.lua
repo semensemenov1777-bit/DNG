@@ -1,253 +1,1429 @@
--- Сгенерированный и полностью оживленный код GUI DNG
+-- Сгенерированный код GUI
+
 local DNG = Instance.new("ScreenGui")
--- Безопасная инициализация интерфейса для читов (чтобы не ломалось при перезаходе)
-local CoreGui = game:GetService("CoreGui")
-if CoreGui:FindFirstChild("DNG") then CoreGui.DNG:Destroy() end
-DNG.Name = "DNG"
-DNG.Parent = CoreGui
-DNG.ResetOnSpawn = false
+DNG.Parent = game.StarterGui
 
 local Holder = Instance.new("Frame")
-Holder.Name = "Holder"
 Holder.Size = UDim2.new(0, 380, 0, 243)
-Holder.Position = UDim2.new(0.435, 0, 0.246, 0)
+Holder.Position = UDim2.new(0.4352181553840637, 0, 0.2469135820865631, 0)
 Holder.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 Holder.BorderSizePixel = 0
+Holder.AnchorPoint = Vector2.new(0, 0)
+Holder.ZIndex = 1
 Holder.Visible = true
 Holder.Parent = DNG
 
--- Делаем меню перетаскиваемым мышкой (актуально для читов)
-local UserInputService = game:GetService("UserInputService")
-local dragging, dragInput, dragStart, startPos
-local function update(input)
-    local delta = input.Position - dragStart
-    Holder.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
-end
-Holder.InputBegan:Connect(function(input)
-    if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-        dragging = true dragStart = input.Position startPos = Holder.Position
-        input.Changed:Connect(function() if input.UserInputState == Enum.UserInputState.End then dragging = false end end)
-    end
-end)
-Holder.InputChanged:Connect(function(input)
-    if input.UserInputType == Enum.UserInputType.MouseBehavior or input.UserInputType == Enum.UserInputType.Touch then dragInput = input end
-end)
-UserInputService.InputChanged:Connect(function(input) if input == dragInput and dragging then update(input) end end)
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = Holder
 
-local Holder_Stroke = Instance.new("UIStroke")
-Holder_Stroke.Color = Color3.fromRGB(255, 255, 255)
-Holder_Stroke.Parent = Holder
+local Page1 = Instance.new("TextButton")
+Page1.Size = UDim2.new(0, 50, 0, 31)
+Page1.Position = UDim2.new(0, 0, 0.8724279999732971, 0)
+Page1.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Page1.TextColor3 = Color3.fromRGB(255, 255, 255)
+Page1.Text = [=[Page 1]=]
+Page1.Font = Enum.Font.SourceSans
+Page1.BorderSizePixel = 0
+Page1.AnchorPoint = Vector2.new(0, 0)
+Page1.ZIndex = 1
+Page1.Visible = true
+Page1.Parent = Holder
 
--- Заголовок меню
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = Page1
+
+local Page2 = Instance.new("TextButton")
+Page2.Size = UDim2.new(0, 50, 0, 31)
+Page2.Position = UDim2.new(0.15263158082962036, 0, 0.8724279999732971, 0)
+Page2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Page2.TextColor3 = Color3.fromRGB(255, 255, 255)
+Page2.Text = [=[Page 2]=]
+Page2.Font = Enum.Font.SourceSans
+Page2.BorderSizePixel = 0
+Page2.AnchorPoint = Vector2.new(0, 0)
+Page2.ZIndex = 1
+Page2.Visible = true
+Page2.Parent = Holder
+
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = Page2
+
+local Page3 = Instance.new("TextButton")
+Page3.Size = UDim2.new(0, 50, 0, 31)
+Page3.Position = UDim2.new(0.3052631616592407, 0, 0.8724279999732971, 0)
+Page3.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Page3.TextColor3 = Color3.fromRGB(255, 255, 255)
+Page3.Text = [=[Page 3]=]
+Page3.Font = Enum.Font.SourceSans
+Page3.BorderSizePixel = 0
+Page3.AnchorPoint = Vector2.new(0, 0)
+Page3.ZIndex = 1
+Page3.Visible = true
+Page3.Parent = Holder
+
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = Page3
+
+local Page4 = Instance.new("TextButton")
+Page4.Size = UDim2.new(0, 50, 0, 31)
+Page4.Position = UDim2.new(0.4578947424888611, 0, 0.8724279999732971, 0)
+Page4.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Page4.TextColor3 = Color3.fromRGB(255, 255, 255)
+Page4.Text = [=[Page 4]=]
+Page4.Font = Enum.Font.SourceSans
+Page4.BorderSizePixel = 0
+Page4.AnchorPoint = Vector2.new(0, 0)
+Page4.ZIndex = 1
+Page4.Visible = true
+Page4.Parent = Holder
+
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = Page4
+
+local Page6 = Instance.new("TextButton")
+Page6.Size = UDim2.new(0, 50, 0, 31)
+Page6.Position = UDim2.new(0.7657894492149353, 0, 0.8724279999732971, 0)
+Page6.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Page6.TextColor3 = Color3.fromRGB(255, 255, 255)
+Page6.Text = [=[Page 6]=]
+Page6.Font = Enum.Font.SourceSans
+Page6.BorderSizePixel = 0
+Page6.AnchorPoint = Vector2.new(0, 0)
+Page6.ZIndex = 1
+Page6.Visible = true
+Page6.Parent = Holder
+
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = Page6
+
+local Page5 = Instance.new("TextButton")
+Page5.Size = UDim2.new(0, 50, 0, 31)
+Page5.Position = UDim2.new(0.6131578683853149, 0, 0.8724279999732971, 0)
+Page5.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Page5.TextColor3 = Color3.fromRGB(255, 255, 255)
+Page5.Text = [=[Page 5]=]
+Page5.Font = Enum.Font.SourceSans
+Page5.BorderSizePixel = 0
+Page5.AnchorPoint = Vector2.new(0, 0)
+Page5.ZIndex = 1
+Page5.Visible = true
+Page5.Parent = Holder
+
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = Page5
+
 local Title = Instance.new("TextLabel")
-Title.Name = "Title"
 Title.Size = UDim2.new(0, 380, 0, 30)
+Title.Position = UDim2.new(0, 0, 0, 0)
 Title.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 Title.TextColor3 = Color3.fromRGB(255, 255, 255)
-Title.Text = "DNG"
-Title.Font = Enum.Font.SourceSansBold
-Title.TextSize = 18
+Title.Text = [=[DNG]=]
+Title.Font = Enum.Font.SourceSans
 Title.BorderSizePixel = 0
+Title.AnchorPoint = Vector2.new(0, 0)
+Title.ZIndex = 1
+Title.Visible = true
 Title.Parent = Holder
 
-local Title_Stroke = Instance.new("UIStroke")
-Title_Stroke.Color = Color3.fromRGB(50, 50, 50)
-Title_Stroke.Parent = Title
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = Title
 
--- СОЗДАНИЕ СТРАНИЦ-ВКЛАДОК
-local pages = {}
+local P1 = Instance.new("Frame")
+P1.Size = UDim2.new(0, 361, 0, 156)
+P1.Position = UDim2.new(0.021052632480859756, 0, 0.18518517911434174, 0)
+P1.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+P1.BorderSizePixel = 0
+P1.AnchorPoint = Vector2.new(0, 0)
+P1.ZIndex = 1
+P1.Visible = false
+P1.Parent = Holder
 
-local function createPage(name, isVisible)
-    local P = Instance.new("Frame")
-    P.Name = name
-    P.Size = UDim2.new(0, 361, 0, 156)
-    P.Position = UDim2.new(0.021, 0, 0.185, 0)
-    P.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-    P.BorderSizePixel = 0
-    P.Visible = isVisible
-    P.Parent = Holder
-    local stroke = Instance.new("UIStroke")
-    stroke.Color = Color3.fromRGB(40, 40, 40)
-    stroke.Parent = P
-    pages[name] = P
-    return P
-end
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = P1
 
-local P1 = createPage("P1", false)
-local P2 = createPage("P2", false)
-local P3 = createPage("P3", false)
-local P4 = createPage("P4", false)
-local P5 = createPage("P5", false)
-local P6 = createPage("P6", false)
-local Cr = createPage("Cr", true) -- Стартовая страница (Credits)
-local Ex = createPage("Ex", false) -- Вкладка встроенного инжектора
+local TextButton = Instance.new("TextButton")
+TextButton.Size = UDim2.new(0, 107, 0, 35)
+TextButton.Position = UDim2.new(0.6968326568603516, 0, 0.053918104618787766, 0)
+TextButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.Text = [=[Team spam]=]
+TextButton.Font = Enum.Font.SourceSans
+TextButton.BorderSizePixel = 0
+TextButton.AnchorPoint = Vector2.new(0, 0)
+TextButton.ZIndex = 1
+TextButton.Visible = true
+TextButton.Parent = P1
 
--- Функция для быстрого переключения страниц
-local function showPage(pageFrame)
-    for _, p in pairs(pages) do p.Visible = false end
-    pageFrame.Visible = true
-end
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = TextButton
 
--- НАПОЛНЕНИЕ СТРАНИЦЫ КРЕДИТОВ (Cr)
+local TextButton = Instance.new("TextButton")
+TextButton.Size = UDim2.new(0, 107, 0, 35)
+TextButton.Position = UDim2.new(0.013850415125489235, 0, 0.05407695099711418, 0)
+TextButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.Text = [=[Particles]=]
+TextButton.Font = Enum.Font.SourceSans
+TextButton.BorderSizePixel = 0
+TextButton.AnchorPoint = Vector2.new(0, 0)
+TextButton.ZIndex = 1
+TextButton.Visible = true
+TextButton.Parent = P1
+
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = TextButton
+
+local TextButton = Instance.new("TextButton")
+TextButton.Size = UDim2.new(0, 107, 0, 35)
+TextButton.Position = UDim2.new(0.3538757562637329, 0, 0.053918104618787766, 0)
+TextButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.Text = [=[Decal spam]=]
+TextButton.Font = Enum.Font.SourceSans
+TextButton.BorderSizePixel = 0
+TextButton.AnchorPoint = Vector2.new(0, 0)
+TextButton.ZIndex = 1
+TextButton.Visible = true
+TextButton.Parent = P1
+
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = TextButton
+
+local TextButton = Instance.new("TextButton")
+TextButton.Size = UDim2.new(0, 107, 0, 35)
+TextButton.Position = UDim2.new(0.3538757562637329, 0, 0.33451277017593384, 0)
+TextButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.Text = [=[Message]=]
+TextButton.Font = Enum.Font.SourceSans
+TextButton.BorderSizePixel = 0
+TextButton.AnchorPoint = Vector2.new(0, 0)
+TextButton.ZIndex = 1
+TextButton.Visible = true
+TextButton.Parent = P1
+
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = TextButton
+
+local TextButton = Instance.new("TextButton")
+TextButton.Size = UDim2.new(0, 107, 0, 35)
+TextButton.Position = UDim2.new(0.6968326568603516, 0, 0.33451277017593384, 0)
+TextButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.Text = [=[Chat spam]=]
+TextButton.Font = Enum.Font.SourceSans
+TextButton.BorderSizePixel = 0
+TextButton.AnchorPoint = Vector2.new(0, 0)
+TextButton.ZIndex = 1
+TextButton.Visible = true
+TextButton.Parent = P1
+
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = TextButton
+
+local TextButton = Instance.new("TextButton")
+TextButton.Size = UDim2.new(0, 107, 0, 35)
+TextButton.Position = UDim2.new(0.013850415125489235, 0, 0.33451277017593384, 0)
+TextButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.Text = [=[Dubstep Namaz theme]=]
+TextButton.Font = Enum.Font.SourceSans
+TextButton.BorderSizePixel = 0
+TextButton.AnchorPoint = Vector2.new(0, 0)
+TextButton.ZIndex = 1
+TextButton.Visible = true
+TextButton.Parent = P1
+
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = TextButton
+
+local TextButton = Instance.new("TextButton")
+TextButton.Size = UDim2.new(0, 107, 0, 35)
+TextButton.Position = UDim2.new(0.013850499875843525, 0, 0.619817852973938, 0)
+TextButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.Text = [=[Govno spam R6]=]
+TextButton.Font = Enum.Font.SourceSans
+TextButton.BorderSizePixel = 0
+TextButton.AnchorPoint = Vector2.new(0, 0)
+TextButton.ZIndex = 1
+TextButton.Visible = true
+TextButton.Parent = P1
+
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = TextButton
+
+local TextButton = Instance.new("TextButton")
+TextButton.Size = UDim2.new(0, 107, 0, 35)
+TextButton.Position = UDim2.new(0.3538757562637329, 0, 0.619817852973938, 0)
+TextButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.Text = [=[Govno spam R15]=]
+TextButton.Font = Enum.Font.SourceSans
+TextButton.BorderSizePixel = 0
+TextButton.AnchorPoint = Vector2.new(0, 0)
+TextButton.ZIndex = 1
+TextButton.Visible = true
+TextButton.Parent = P1
+
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = TextButton
+
+local TextButton = Instance.new("TextButton")
+TextButton.Size = UDim2.new(0, 107, 0, 35)
+TextButton.Position = UDim2.new(0.6968326568603516, 0, 0.619817852973938, 0)
+TextButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.Text = [=[Hint]=]
+TextButton.Font = Enum.Font.SourceSans
+TextButton.BorderSizePixel = 0
+TextButton.AnchorPoint = Vector2.new(0, 0)
+TextButton.ZIndex = 1
+TextButton.Visible = true
+TextButton.Parent = P1
+
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = TextButton
+
+local PageNum = Instance.new("TextLabel")
+PageNum.Size = UDim2.new(0, 350, 0, 17)
+PageNum.Position = UDim2.new(0.013850415125489235, 0, 0.8910256624221802, 0)
+PageNum.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+PageNum.TextColor3 = Color3.fromRGB(255, 255, 255)
+PageNum.Text = [=[1]=]
+PageNum.Font = Enum.Font.SourceSans
+PageNum.BorderSizePixel = 0
+PageNum.AnchorPoint = Vector2.new(0, 0)
+PageNum.ZIndex = 1
+PageNum.Visible = true
+PageNum.Parent = P1
+
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = PageNum
+
+local P2 = Instance.new("Frame")
+P2.Size = UDim2.new(0, 361, 0, 156)
+P2.Position = UDim2.new(0.021052632480859756, 0, 0.18518517911434174, 0)
+P2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+P2.BorderSizePixel = 0
+P2.AnchorPoint = Vector2.new(0, 0)
+P2.ZIndex = 1
+P2.Visible = false
+P2.Parent = Holder
+
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = P2
+
+local TextButton = Instance.new("TextButton")
+TextButton.Size = UDim2.new(0, 107, 0, 35)
+TextButton.Position = UDim2.new(0.6968326568603516, 0, 0.053918104618787766, 0)
+TextButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.Text = [=[Billboard]=]
+TextButton.Font = Enum.Font.SourceSans
+TextButton.BorderSizePixel = 0
+TextButton.AnchorPoint = Vector2.new(0, 0)
+TextButton.ZIndex = 1
+TextButton.Visible = true
+TextButton.Parent = P2
+
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = TextButton
+
+local TextButton = Instance.new("TextButton")
+TextButton.Size = UDim2.new(0, 107, 0, 35)
+TextButton.Position = UDim2.new(0.013850415125489235, 0, 0.05407695099711418, 0)
+TextButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.Text = [=[Burn all]=]
+TextButton.Font = Enum.Font.SourceSans
+TextButton.BorderSizePixel = 0
+TextButton.AnchorPoint = Vector2.new(0, 0)
+TextButton.ZIndex = 1
+TextButton.Visible = true
+TextButton.Parent = P2
+
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = TextButton
+
+local TextButton = Instance.new("TextButton")
+TextButton.Size = UDim2.new(0, 107, 0, 35)
+TextButton.Position = UDim2.new(0.3538757562637329, 0, 0.053918104618787766, 0)
+TextButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.Text = [=[Screamer]=]
+TextButton.Font = Enum.Font.SourceSans
+TextButton.BorderSizePixel = 0
+TextButton.AnchorPoint = Vector2.new(0, 0)
+TextButton.ZIndex = 1
+TextButton.Visible = true
+TextButton.Parent = P2
+
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = TextButton
+
+local TextButton = Instance.new("TextButton")
+TextButton.Size = UDim2.new(0, 107, 0, 35)
+TextButton.Position = UDim2.new(0.3538757562637329, 0, 0.33451277017593384, 0)
+TextButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.Text = [=[Stop music]=]
+TextButton.Font = Enum.Font.SourceSans
+TextButton.BorderSizePixel = 0
+TextButton.AnchorPoint = Vector2.new(0, 0)
+TextButton.ZIndex = 1
+TextButton.Visible = true
+TextButton.Parent = P2
+
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = TextButton
+
+local TextButton = Instance.new("TextButton")
+TextButton.Size = UDim2.new(0, 107, 0, 35)
+TextButton.Position = UDim2.new(0.6968326568603516, 0, 0.33451277017593384, 0)
+TextButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.Text = [=[Under theme]=]
+TextButton.Font = Enum.Font.SourceSans
+TextButton.BorderSizePixel = 0
+TextButton.AnchorPoint = Vector2.new(0, 0)
+TextButton.ZIndex = 1
+TextButton.Visible = true
+TextButton.Parent = P2
+
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = TextButton
+
+local TextButton = Instance.new("TextButton")
+TextButton.Size = UDim2.new(0, 107, 0, 35)
+TextButton.Position = UDim2.new(0.013850415125489235, 0, 0.33451277017593384, 0)
+TextButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.Text = [=[k00p theme]=]
+TextButton.Font = Enum.Font.SourceSans
+TextButton.BorderSizePixel = 0
+TextButton.AnchorPoint = Vector2.new(0, 0)
+TextButton.ZIndex = 1
+TextButton.Visible = true
+TextButton.Parent = P2
+
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = TextButton
+
+local TextButton = Instance.new("TextButton")
+TextButton.Size = UDim2.new(0, 107, 0, 35)
+TextButton.Position = UDim2.new(0.013850499875843525, 0, 0.619817852973938, 0)
+TextButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.Text = [=[Ball rain]=]
+TextButton.Font = Enum.Font.SourceSans
+TextButton.BorderSizePixel = 0
+TextButton.AnchorPoint = Vector2.new(0, 0)
+TextButton.ZIndex = 1
+TextButton.Visible = true
+TextButton.Parent = P2
+
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = TextButton
+
+local TextButton = Instance.new("TextButton")
+TextButton.Size = UDim2.new(0, 107, 0, 35)
+TextButton.Position = UDim2.new(0.6968326568603516, 0, 0.619817852973938, 0)
+TextButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.Text = [=[Disort all]=]
+TextButton.Font = Enum.Font.SourceSans
+TextButton.BorderSizePixel = 0
+TextButton.AnchorPoint = Vector2.new(0, 0)
+TextButton.ZIndex = 1
+TextButton.Visible = true
+TextButton.Parent = P2
+
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = TextButton
+
+local TextButton = Instance.new("TextButton")
+TextButton.Size = UDim2.new(0, 107, 0, 35)
+TextButton.Position = UDim2.new(0.3538757562637329, 0, 0.619817852973938, 0)
+TextButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.Text = [=[Disco]=]
+TextButton.Font = Enum.Font.SourceSans
+TextButton.BorderSizePixel = 0
+TextButton.AnchorPoint = Vector2.new(0, 0)
+TextButton.ZIndex = 1
+TextButton.Visible = true
+TextButton.Parent = P2
+
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = TextButton
+
+local PageNum = Instance.new("TextLabel")
+PageNum.Size = UDim2.new(0, 350, 0, 17)
+PageNum.Position = UDim2.new(0.013850415125489235, 0, 0.8910256624221802, 0)
+PageNum.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+PageNum.TextColor3 = Color3.fromRGB(255, 255, 255)
+PageNum.Text = [=[2]=]
+PageNum.Font = Enum.Font.SourceSans
+PageNum.BorderSizePixel = 0
+PageNum.AnchorPoint = Vector2.new(0, 0)
+PageNum.ZIndex = 1
+PageNum.Visible = true
+PageNum.Parent = P2
+
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = PageNum
+
+local P3 = Instance.new("Frame")
+P3.Size = UDim2.new(0, 361, 0, 156)
+P3.Position = UDim2.new(0.021052632480859756, 0, 0.18518517911434174, 0)
+P3.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+P3.BorderSizePixel = 0
+P3.AnchorPoint = Vector2.new(0, 0)
+P3.ZIndex = 1
+P3.Visible = false
+P3.Parent = Holder
+
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = P3
+
+local TextButton = Instance.new("TextButton")
+TextButton.Size = UDim2.new(0, 107, 0, 35)
+TextButton.Position = UDim2.new(0.6968326568603516, 0, 0.053918104618787766, 0)
+TextButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.Text = [=[Insert Anti-Leave]=]
+TextButton.Font = Enum.Font.SourceSans
+TextButton.BorderSizePixel = 0
+TextButton.AnchorPoint = Vector2.new(0, 0)
+TextButton.ZIndex = 1
+TextButton.Visible = true
+TextButton.Parent = P3
+
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = TextButton
+
+local TextButton = Instance.new("TextButton")
+TextButton.Size = UDim2.new(0, 107, 0, 35)
+TextButton.Position = UDim2.new(0.013850415125489235, 0, 0.05407695099711418, 0)
+TextButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.Text = [=[c00l theme]=]
+TextButton.Font = Enum.Font.SourceSans
+TextButton.BorderSizePixel = 0
+TextButton.AnchorPoint = Vector2.new(0, 0)
+TextButton.ZIndex = 1
+TextButton.Visible = true
+TextButton.Parent = P3
+
+local RemoteEvent = Instance.new("RemoteEvent")
+RemoteEvent.Parent = TextButton
+
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = TextButton
+
+local TextButton = Instance.new("TextButton")
+TextButton.Size = UDim2.new(0, 107, 0, 35)
+TextButton.Position = UDim2.new(0.3538757562637329, 0, 0.053918104618787766, 0)
+TextButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.Text = [=[Negative]=]
+TextButton.Font = Enum.Font.SourceSans
+TextButton.BorderSizePixel = 0
+TextButton.AnchorPoint = Vector2.new(0, 0)
+TextButton.ZIndex = 1
+TextButton.Visible = true
+TextButton.Parent = P3
+
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = TextButton
+
+local TextButton = Instance.new("TextButton")
+TextButton.Size = UDim2.new(0, 107, 0, 35)
+TextButton.Position = UDim2.new(0.3538757562637329, 0, 0.33451277017593384, 0)
+TextButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.Text = [=[Logo particles]=]
+TextButton.Font = Enum.Font.SourceSans
+TextButton.BorderSizePixel = 0
+TextButton.AnchorPoint = Vector2.new(0, 0)
+TextButton.ZIndex = 1
+TextButton.Visible = true
+TextButton.Parent = P3
+
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = TextButton
+
+local TextButton = Instance.new("TextButton")
+TextButton.Size = UDim2.new(0, 107, 0, 35)
+TextButton.Position = UDim2.new(0.6968326568603516, 0, 0.33451277017593384, 0)
+TextButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.Text = [=[Realm]=]
+TextButton.Font = Enum.Font.SourceSans
+TextButton.BorderSizePixel = 0
+TextButton.AnchorPoint = Vector2.new(0, 0)
+TextButton.ZIndex = 1
+TextButton.Visible = true
+TextButton.Parent = P3
+
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = TextButton
+
+local RemoteEvent = Instance.new("RemoteEvent")
+RemoteEvent.Parent = TextButton
+
+local TextButton = Instance.new("TextButton")
+TextButton.Size = UDim2.new(0, 107, 0, 35)
+TextButton.Position = UDim2.new(0.013850415125489235, 0, 0.33451277017593384, 0)
+TextButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.Text = [=[Animated Skybox TOB]=]
+TextButton.Font = Enum.Font.SourceSans
+TextButton.BorderSizePixel = 0
+TextButton.AnchorPoint = Vector2.new(0, 0)
+TextButton.ZIndex = 1
+TextButton.Visible = true
+TextButton.Parent = P3
+
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = TextButton
+
+local TextButton = Instance.new("TextButton")
+TextButton.Size = UDim2.new(0, 107, 0, 35)
+TextButton.Position = UDim2.new(0.013850499875843525, 0, 0.619817852973938, 0)
+TextButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.Text = [=[Skeletons sky]=]
+TextButton.Font = Enum.Font.SourceSans
+TextButton.BorderSizePixel = 0
+TextButton.AnchorPoint = Vector2.new(0, 0)
+TextButton.ZIndex = 1
+TextButton.Visible = true
+TextButton.Parent = P3
+
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = TextButton
+
+local TextButton = Instance.new("TextButton")
+TextButton.Size = UDim2.new(0, 107, 0, 35)
+TextButton.Position = UDim2.new(0.6968326568603516, 0, 0.619817852973938, 0)
+TextButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.Text = [=[Polaria]=]
+TextButton.Font = Enum.Font.SourceSans
+TextButton.BorderSizePixel = 0
+TextButton.AnchorPoint = Vector2.new(0, 0)
+TextButton.ZIndex = 1
+TextButton.Visible = true
+TextButton.Parent = P3
+
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = TextButton
+
+local RemoteEvent = Instance.new("RemoteEvent")
+RemoteEvent.Parent = TextButton
+
+local TextButton = Instance.new("TextButton")
+TextButton.Size = UDim2.new(0, 107, 0, 35)
+TextButton.Position = UDim2.new(0.3538757562637329, 0, 0.619817852973938, 0)
+TextButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.Text = [=[Avatars]=]
+TextButton.Font = Enum.Font.SourceSans
+TextButton.BorderSizePixel = 0
+TextButton.AnchorPoint = Vector2.new(0, 0)
+TextButton.ZIndex = 1
+TextButton.Visible = true
+TextButton.Parent = P3
+
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = TextButton
+
+local PageNum = Instance.new("TextLabel")
+PageNum.Size = UDim2.new(0, 350, 0, 17)
+PageNum.Position = UDim2.new(0.013850415125489235, 0, 0.8910256624221802, 0)
+PageNum.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+PageNum.TextColor3 = Color3.fromRGB(255, 255, 255)
+PageNum.Text = [=[3]=]
+PageNum.Font = Enum.Font.SourceSans
+PageNum.BorderSizePixel = 0
+PageNum.AnchorPoint = Vector2.new(0, 0)
+PageNum.ZIndex = 1
+PageNum.Visible = true
+PageNum.Parent = P3
+
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = PageNum
+
+local P4 = Instance.new("Frame")
+P4.Size = UDim2.new(0, 361, 0, 156)
+P4.Position = UDim2.new(0.021052632480859756, 0, 0.18518517911434174, 0)
+P4.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+P4.BorderSizePixel = 0
+P4.AnchorPoint = Vector2.new(0, 0)
+P4.ZIndex = 1
+P4.Visible = false
+P4.Parent = Holder
+
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = P4
+
+local TextButton = Instance.new("TextButton")
+TextButton.Size = UDim2.new(0, 107, 0, 35)
+TextButton.Position = UDim2.new(0.6968326568603516, 0, 0.053918104618787766, 0)
+TextButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.Text = [=[Underssky Trollface]=]
+TextButton.Font = Enum.Font.SourceSans
+TextButton.BorderSizePixel = 0
+TextButton.AnchorPoint = Vector2.new(0, 0)
+TextButton.ZIndex = 1
+TextButton.Visible = true
+TextButton.Parent = P4
+
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = TextButton
+
+local TextButton = Instance.new("TextButton")
+TextButton.Size = UDim2.new(0, 107, 0, 35)
+TextButton.Position = UDim2.new(0.013850415125489235, 0, 0.05407695099711418, 0)
+TextButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.Text = [=[Tob Trollface]=]
+TextButton.Font = Enum.Font.SourceSans
+TextButton.BorderSizePixel = 0
+TextButton.AnchorPoint = Vector2.new(0, 0)
+TextButton.ZIndex = 1
+TextButton.Visible = true
+TextButton.Parent = P4
+
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = TextButton
+
+local TextButton = Instance.new("TextButton")
+TextButton.Size = UDim2.new(0, 107, 0, 35)
+TextButton.Position = UDim2.new(0.3538757562637329, 0, 0.053918104618787766, 0)
+TextButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.Text = [=[Archie Trollface]=]
+TextButton.Font = Enum.Font.SourceSans
+TextButton.BorderSizePixel = 0
+TextButton.AnchorPoint = Vector2.new(0, 0)
+TextButton.ZIndex = 1
+TextButton.Visible = true
+TextButton.Parent = P4
+
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = TextButton
+
+local TextButton = Instance.new("TextButton")
+TextButton.Size = UDim2.new(0, 107, 0, 35)
+TextButton.Position = UDim2.new(0.3538757562637329, 0, 0.33451277017593384, 0)
+TextButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.Text = [=[Irlington Trollface]=]
+TextButton.Font = Enum.Font.SourceSans
+TextButton.BorderSizePixel = 0
+TextButton.AnchorPoint = Vector2.new(0, 0)
+TextButton.ZIndex = 1
+TextButton.Visible = true
+TextButton.Parent = P4
+
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = TextButton
+
+local TextButton = Instance.new("TextButton")
+TextButton.Size = UDim2.new(0, 107, 0, 35)
+TextButton.Position = UDim2.new(0.6968326568603516, 0, 0.33451277017593384, 0)
+TextButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.Text = [=[Dubstep Namaz Trollface]=]
+TextButton.Font = Enum.Font.SourceSans
+TextButton.BorderSizePixel = 0
+TextButton.AnchorPoint = Vector2.new(0, 0)
+TextButton.ZIndex = 1
+TextButton.Visible = true
+TextButton.Parent = P4
+
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = TextButton
+
+local TextButton = Instance.new("TextButton")
+TextButton.Size = UDim2.new(0, 107, 0, 35)
+TextButton.Position = UDim2.new(0.013850415125489235, 0, 0.33451277017593384, 0)
+TextButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.Text = [=[Tob 2 Trollface]=]
+TextButton.Font = Enum.Font.SourceSans
+TextButton.BorderSizePixel = 0
+TextButton.AnchorPoint = Vector2.new(0, 0)
+TextButton.ZIndex = 1
+TextButton.Visible = true
+TextButton.Parent = P4
+
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = TextButton
+
+local TextButton = Instance.new("TextButton")
+TextButton.Size = UDim2.new(0, 107, 0, 35)
+TextButton.Position = UDim2.new(0.013850499875843525, 0, 0.619817852973938, 0)
+TextButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.Text = [=[Sosiski]=]
+TextButton.Font = Enum.Font.SourceSans
+TextButton.BorderSizePixel = 0
+TextButton.AnchorPoint = Vector2.new(0, 0)
+TextButton.ZIndex = 1
+TextButton.Visible = true
+TextButton.Parent = P4
+
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = TextButton
+
+local TextButton = Instance.new("TextButton")
+TextButton.Size = UDim2.new(0, 107, 0, 35)
+TextButton.Position = UDim2.new(0.6968326568603516, 0, 0.619817852973938, 0)
+TextButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.Text = [=[Tob Particles]=]
+TextButton.Font = Enum.Font.SourceSans
+TextButton.BorderSizePixel = 0
+TextButton.AnchorPoint = Vector2.new(0, 0)
+TextButton.ZIndex = 1
+TextButton.Visible = true
+TextButton.Parent = P4
+
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = TextButton
+
+local TextButton = Instance.new("TextButton")
+TextButton.Size = UDim2.new(0, 107, 0, 35)
+TextButton.Position = UDim2.new(0.3538757562637329, 0, 0.619817852973938, 0)
+TextButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.Text = [=[Water Mark]=]
+TextButton.Font = Enum.Font.SourceSans
+TextButton.BorderSizePixel = 0
+TextButton.AnchorPoint = Vector2.new(0, 0)
+TextButton.ZIndex = 1
+TextButton.Visible = true
+TextButton.Parent = P4
+
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = TextButton
+
+local PageNum = Instance.new("TextLabel")
+PageNum.Size = UDim2.new(0, 350, 0, 17)
+PageNum.Position = UDim2.new(0.013850415125489235, 0, 0.8910256624221802, 0)
+PageNum.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+PageNum.TextColor3 = Color3.fromRGB(255, 255, 255)
+PageNum.Text = [=[4]=]
+PageNum.Font = Enum.Font.SourceSans
+PageNum.BorderSizePixel = 0
+PageNum.AnchorPoint = Vector2.new(0, 0)
+PageNum.ZIndex = 1
+PageNum.Visible = true
+PageNum.Parent = P4
+
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = PageNum
+
+local P5 = Instance.new("Frame")
+P5.Size = UDim2.new(0, 361, 0, 156)
+P5.Position = UDim2.new(0.021052632480859756, 0, 0.18518517911434174, 0)
+P5.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+P5.BorderSizePixel = 0
+P5.AnchorPoint = Vector2.new(0, 0)
+P5.ZIndex = 1
+P5.Visible = false
+P5.Parent = Holder
+
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = P5
+
+local TextButton = Instance.new("TextButton")
+TextButton.Size = UDim2.new(0, 107, 0, 35)
+TextButton.Position = UDim2.new(0.6968326568603516, 0, 0.053918104618787766, 0)
+TextButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.Text = [=[TURN OF HIM NAHUI]=]
+TextButton.Font = Enum.Font.SourceSans
+TextButton.BorderSizePixel = 0
+TextButton.AnchorPoint = Vector2.new(0, 0)
+TextButton.ZIndex = 1
+TextButton.Visible = true
+TextButton.Parent = P5
+
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = TextButton
+
+local TextButton = Instance.new("TextButton")
+TextButton.Size = UDim2.new(0, 107, 0, 35)
+TextButton.Position = UDim2.new(0.013850415125489235, 0, 0.05407695099711418, 0)
+TextButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.Text = [=[Tools]=]
+TextButton.Font = Enum.Font.SourceSans
+TextButton.BorderSizePixel = 0
+TextButton.AnchorPoint = Vector2.new(0, 0)
+TextButton.ZIndex = 1
+TextButton.Visible = true
+TextButton.Parent = P5
+
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = TextButton
+
+local TextButton = Instance.new("TextButton")
+TextButton.Size = UDim2.new(0, 107, 0, 35)
+TextButton.Position = UDim2.new(0.3538757562637329, 0, 0.053918104618787766, 0)
+TextButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.Text = [=[c00lgui]=]
+TextButton.Font = Enum.Font.SourceSans
+TextButton.BorderSizePixel = 0
+TextButton.AnchorPoint = Vector2.new(0, 0)
+TextButton.ZIndex = 1
+TextButton.Visible = true
+TextButton.Parent = P5
+
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = TextButton
+
+local RemoteEvent = Instance.new("RemoteEvent")
+RemoteEvent.Parent = TextButton
+
+local TextButton = Instance.new("TextButton")
+TextButton.Size = UDim2.new(0, 107, 0, 35)
+TextButton.Position = UDim2.new(0.3538757562637329, 0, 0.33451277017593384, 0)
+TextButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.Text = [=[Interns]=]
+TextButton.Font = Enum.Font.SourceSans
+TextButton.BorderSizePixel = 0
+TextButton.AnchorPoint = Vector2.new(0, 0)
+TextButton.ZIndex = 1
+TextButton.Visible = true
+TextButton.Parent = P5
+
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = TextButton
+
+local TextButton = Instance.new("TextButton")
+TextButton.Size = UDim2.new(0, 107, 0, 35)
+TextButton.Position = UDim2.new(0.6968326568603516, 0, 0.33451277017593384, 0)
+TextButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.Text = [=[IHP Music]=]
+TextButton.Font = Enum.Font.SourceSans
+TextButton.BorderSizePixel = 0
+TextButton.AnchorPoint = Vector2.new(0, 0)
+TextButton.ZIndex = 1
+TextButton.Visible = true
+TextButton.Parent = P5
+
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = TextButton
+
+local TextButton = Instance.new("TextButton")
+TextButton.Size = UDim2.new(0, 107, 0, 35)
+TextButton.Position = UDim2.new(0.013850415125489235, 0, 0.33451277017593384, 0)
+TextButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.Text = [=[Roma Facts - Lasers from eyes]=]
+TextButton.Font = Enum.Font.SourceSans
+TextButton.BorderSizePixel = 0
+TextButton.AnchorPoint = Vector2.new(0, 0)
+TextButton.ZIndex = 1
+TextButton.Visible = true
+TextButton.Parent = P5
+
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = TextButton
+
+local TextButton = Instance.new("TextButton")
+TextButton.Size = UDim2.new(0, 107, 0, 35)
+TextButton.Position = UDim2.new(0.013850499875843525, 0, 0.619817852973938, 0)
+TextButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.Text = [=[Moonzy X Spam]=]
+TextButton.Font = Enum.Font.SourceSans
+TextButton.BorderSizePixel = 0
+TextButton.AnchorPoint = Vector2.new(0, 0)
+TextButton.ZIndex = 1
+TextButton.Visible = true
+TextButton.Parent = P5
+
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = TextButton
+
+local TextButton = Instance.new("TextButton")
+TextButton.Size = UDim2.new(0, 107, 0, 35)
+TextButton.Position = UDim2.new(0.6968326568603516, 0, 0.619817852973938, 0)
+TextButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.Text = [=[Another Hardstyle music]=]
+TextButton.Font = Enum.Font.SourceSans
+TextButton.BorderSizePixel = 0
+TextButton.AnchorPoint = Vector2.new(0, 0)
+TextButton.ZIndex = 1
+TextButton.Visible = true
+TextButton.Parent = P5
+
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = TextButton
+
+local TextButton = Instance.new("TextButton")
+TextButton.Size = UDim2.new(0, 107, 0, 35)
+TextButton.Position = UDim2.new(0.3538757562637329, 0, 0.619817852973938, 0)
+TextButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.Text = [=[TOB Spam]=]
+TextButton.Font = Enum.Font.SourceSans
+TextButton.BorderSizePixel = 0
+TextButton.AnchorPoint = Vector2.new(0, 0)
+TextButton.ZIndex = 1
+TextButton.Visible = true
+TextButton.Parent = P5
+
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = TextButton
+
+local PageNum = Instance.new("TextLabel")
+PageNum.Size = UDim2.new(0, 350, 0, 17)
+PageNum.Position = UDim2.new(0.013850415125489235, 0, 0.8910256624221802, 0)
+PageNum.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+PageNum.TextColor3 = Color3.fromRGB(255, 255, 255)
+PageNum.Text = [=[5]=]
+PageNum.Font = Enum.Font.SourceSans
+PageNum.BorderSizePixel = 0
+PageNum.AnchorPoint = Vector2.new(0, 0)
+PageNum.ZIndex = 1
+PageNum.Visible = true
+PageNum.Parent = P5
+
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = PageNum
+
+local P6 = Instance.new("Frame")
+P6.Size = UDim2.new(0, 361, 0, 156)
+P6.Position = UDim2.new(0.021052632480859756, 0, 0.18518517911434174, 0)
+P6.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+P6.BorderSizePixel = 0
+P6.AnchorPoint = Vector2.new(0, 0)
+P6.ZIndex = 1
+P6.Visible = false
+P6.Parent = Holder
+
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = P6
+
+local TextButton = Instance.new("TextButton")
+TextButton.Size = UDim2.new(0, 107, 0, 35)
+TextButton.Position = UDim2.new(0.6968326568603516, 0, 0.053918104618787766, 0)
+TextButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.Text = [=[Poshalko face]=]
+TextButton.Font = Enum.Font.SourceSans
+TextButton.BorderSizePixel = 0
+TextButton.AnchorPoint = Vector2.new(0, 0)
+TextButton.ZIndex = 1
+TextButton.Visible = true
+TextButton.Parent = P6
+
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = TextButton
+
+local TextButton = Instance.new("TextButton")
+TextButton.Size = UDim2.new(0, 107, 0, 35)
+TextButton.Position = UDim2.new(0.013850415125489235, 0, 0.05407695099711418, 0)
+TextButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.Text = [=[S1mple face]=]
+TextButton.Font = Enum.Font.SourceSans
+TextButton.BorderSizePixel = 0
+TextButton.AnchorPoint = Vector2.new(0, 0)
+TextButton.ZIndex = 1
+TextButton.Visible = true
+TextButton.Parent = P6
+
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = TextButton
+
+local TextButton = Instance.new("TextButton")
+TextButton.Size = UDim2.new(0, 107, 0, 35)
+TextButton.Position = UDim2.new(0.3538757562637329, 0, 0.053918104618787766, 0)
+TextButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.Text = [=[TBOI Delirium face]=]
+TextButton.Font = Enum.Font.SourceSans
+TextButton.BorderSizePixel = 0
+TextButton.AnchorPoint = Vector2.new(0, 0)
+TextButton.ZIndex = 1
+TextButton.Visible = true
+TextButton.Parent = P6
+
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = TextButton
+
+local TextButton = Instance.new("TextButton")
+TextButton.Size = UDim2.new(0, 107, 0, 35)
+TextButton.Position = UDim2.new(0.3538757562637329, 0, 0.33451277017593384, 0)
+TextButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.Text = [=[Strahilka face]=]
+TextButton.Font = Enum.Font.SourceSans
+TextButton.BorderSizePixel = 0
+TextButton.AnchorPoint = Vector2.new(0, 0)
+TextButton.ZIndex = 1
+TextButton.Visible = true
+TextButton.Parent = P6
+
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = TextButton
+
+local TextButton = Instance.new("TextButton")
+TextButton.Size = UDim2.new(0, 107, 0, 35)
+TextButton.Position = UDim2.new(0.6968326568603516, 0, 0.33451277017593384, 0)
+TextButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.Text = [=[Horror face]=]
+TextButton.Font = Enum.Font.SourceSans
+TextButton.BorderSizePixel = 0
+TextButton.AnchorPoint = Vector2.new(0, 0)
+TextButton.ZIndex = 1
+TextButton.Visible = true
+TextButton.Parent = P6
+
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = TextButton
+
+local TextButton = Instance.new("TextButton")
+TextButton.Size = UDim2.new(0, 107, 0, 35)
+TextButton.Position = UDim2.new(0.013850415125489235, 0, 0.33451277017593384, 0)
+TextButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.Text = [=[Logo face]=]
+TextButton.Font = Enum.Font.SourceSans
+TextButton.BorderSizePixel = 0
+TextButton.AnchorPoint = Vector2.new(0, 0)
+TextButton.ZIndex = 1
+TextButton.Visible = true
+TextButton.Parent = P6
+
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = TextButton
+
+local TextButton = Instance.new("TextButton")
+TextButton.Size = UDim2.new(0, 107, 0, 35)
+TextButton.Position = UDim2.new(0.013850499875843525, 0, 0.619817852973938, 0)
+TextButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.Text = [=[Belka i Strelka]=]
+TextButton.Font = Enum.Font.SourceSans
+TextButton.BorderSizePixel = 0
+TextButton.AnchorPoint = Vector2.new(0, 0)
+TextButton.ZIndex = 1
+TextButton.Visible = true
+TextButton.Parent = P6
+
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = TextButton
+
+local TextButton = Instance.new("TextButton")
+TextButton.Size = UDim2.new(0, 107, 0, 35)
+TextButton.Position = UDim2.new(0.6968326568603516, 0, 0.619817852973938, 0)
+TextButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.Text = [=[Young FIMOZ - supermarket]=]
+TextButton.Font = Enum.Font.SourceSans
+TextButton.BorderSizePixel = 0
+TextButton.AnchorPoint = Vector2.new(0, 0)
+TextButton.ZIndex = 1
+TextButton.Visible = true
+TextButton.Parent = P6
+
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = TextButton
+
+local RemoteEvent = Instance.new("RemoteEvent")
+RemoteEvent.Parent = TextButton
+
+local TextButton = Instance.new("TextButton")
+TextButton.Size = UDim2.new(0, 107, 0, 35)
+TextButton.Position = UDim2.new(0.3538757562637329, 0, 0.619817852973938, 0)
+TextButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.Text = [=[Dima Nelis]=]
+TextButton.Font = Enum.Font.SourceSans
+TextButton.BorderSizePixel = 0
+TextButton.AnchorPoint = Vector2.new(0, 0)
+TextButton.ZIndex = 1
+TextButton.Visible = true
+TextButton.Parent = P6
+
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = TextButton
+
+local RemoteEvent = Instance.new("RemoteEvent")
+RemoteEvent.Parent = TextButton
+
+local PageNum = Instance.new("TextLabel")
+PageNum.Size = UDim2.new(0, 350, 0, 17)
+PageNum.Position = UDim2.new(0.013850415125489235, 0, 0.8910256624221802, 0)
+PageNum.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+PageNum.TextColor3 = Color3.fromRGB(255, 255, 255)
+PageNum.Text = [=[6]=]
+PageNum.Font = Enum.Font.SourceSans
+PageNum.BorderSizePixel = 0
+PageNum.AnchorPoint = Vector2.new(0, 0)
+PageNum.ZIndex = 1
+PageNum.Visible = true
+PageNum.Parent = P6
+
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = PageNum
+
+local Cr = Instance.new("Frame")
+Cr.Size = UDim2.new(0, 361, 0, 156)
+Cr.Position = UDim2.new(0.021052632480859756, 0, 0.18518517911434174, 0)
+Cr.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Cr.BorderSizePixel = 0
+Cr.AnchorPoint = Vector2.new(0, 0)
+Cr.ZIndex = 1
+Cr.Visible = true
+Cr.Parent = Holder
+
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = Cr
+
 local Hello = Instance.new("TextLabel")
 Hello.Size = UDim2.new(0, 100, 0, 34)
-Hello.BackgroundTransparency = 1
+Hello.Position = UDim2.new(0, 0, 0, 0)
+Hello.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 Hello.TextColor3 = Color3.fromRGB(255, 255, 255)
-Hello.Text = "Hello, "
+Hello.Text = [=[Hello, ]=]
 Hello.Font = Enum.Font.SourceSans
-Hello.TextSize = 20
+Hello.BorderSizePixel = 0
+Hello.AnchorPoint = Vector2.new(0, 0)
+Hello.ZIndex = 1
+Hello.Visible = true
 Hello.Parent = Cr
 
 local User = Instance.new("TextLabel")
 User.Size = UDim2.new(0, 167, 0, 34)
-User.Position = UDim2.new(0.25, 0, 0, 0)
-User.BackgroundTransparency = 1
-User.TextColor3 = Color3.fromRGB(0, 255, 150)
-User.Text = game:GetService("Players").LocalPlayer.Name .. "!"
-User.Font = Enum.Font.SourceSansBold
-User.TextSize = 20
+User.Position = UDim2.new(0.24653740227222443, 0, -0.012820512987673283, 0)
+User.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+User.TextColor3 = Color3.fromRGB(255, 255, 255)
+User.Text = [=[user!]=]
+User.Font = Enum.Font.SourceSans
+User.BorderSizePixel = 0
+User.AnchorPoint = Vector2.new(0, 0)
+User.ZIndex = 1
+User.Visible = true
 User.Parent = Cr
 
 local Dev = Instance.new("TextLabel")
 Dev.Size = UDim2.new(0, 333, 0, 20)
-Dev.Position = UDim2.new(0, 0, 0.256, 0)
-Dev.BackgroundTransparency = 1
+Dev.Position = UDim2.new(0, 0, 0.25641027092933655, 0)
+Dev.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 Dev.TextColor3 = Color3.fromRGB(255, 255, 255)
-Dev.Text = "Developer of GUI: Dubstep Namaz"
+Dev.Text = [=[Developer of GUI: Dubstep Namaz]=]
 Dev.Font = Enum.Font.SourceSans
-Dev.TextSize = 16
+Dev.BorderSizePixel = 0
+Dev.AnchorPoint = Vector2.new(0, 0)
+Dev.ZIndex = 1
+Dev.Visible = true
 Dev.Parent = Cr
 
 local AudioBypass = Instance.new("TextLabel")
 AudioBypass.Size = UDim2.new(0, 335, 0, 26)
-AudioBypass.Position = UDim2.new(0, 0, 0.384, 0)
-AudioBypass.BackgroundTransparency = 1
+AudioBypass.Position = UDim2.new(-0.005540166050195694, 0, 0.38461539149284363, 0)
+AudioBypass.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 AudioBypass.TextColor3 = Color3.fromRGB(255, 255, 255)
-AudioBypass.Text = "Audio Bypass by: 777ililo"
+AudioBypass.Text = [=[Audio Bypass by: 777ililo]=]
 AudioBypass.Font = Enum.Font.SourceSans
-AudioBypass.TextSize = 16
+AudioBypass.BorderSizePixel = 0
+AudioBypass.AnchorPoint = Vector2.new(0, 0)
+AudioBypass.ZIndex = 1
+AudioBypass.Visible = true
 AudioBypass.Parent = Cr
 
-local OpenExecBtn = Instance.new("TextButton")
-OpenExecBtn.Size = UDim2.new(0, 344, 0, 35)
-OpenExecBtn.Position = UDim2.new(0.025, 0, 0.731, 0)
-OpenExecBtn.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
-OpenExecBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
-OpenExecBtn.Text = "Open Executor"
-OpenExecBtn.Font = Enum.Font.SourceSansBold
-OpenExecBtn.TextSize = 16
-OpenExecBtn.Parent = Cr
-local ExecBtn_Stroke = Instance.new("UIStroke")
-ExecBtn_Stroke.Color = Color3.fromRGB(100, 100, 100)
-ExecBtn_Stroke.Parent = OpenExecBtn
-OpenExecBtn.MouseButton1Click:Connect(function() showPage(Ex) end)
+local TextButton = Instance.new("TextButton")
+TextButton.Size = UDim2.new(0, 344, 0, 35)
+TextButton.Position = UDim2.new(0.024930747225880623, 0, 0.7319486737251282, 0)
+TextButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.Text = [=[Executor]=]
+TextButton.Font = Enum.Font.SourceSans
+TextButton.BorderSizePixel = 0
+TextButton.AnchorPoint = Vector2.new(0, 0)
+TextButton.ZIndex = 1
+TextButton.Visible = true
+TextButton.Parent = Cr
 
--- НАПОЛНЕНИЕ СТРАНИЦЫ ВНУТРЕННЕГО ЭКСПЛОЙТА (Ex)
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = TextButton
+
+local Credits = Instance.new("TextButton")
+Credits.Size = UDim2.new(0, 31, 0, 31)
+Credits.Position = UDim2.new(0.9184210300445557, 0, 0.8724279999732971, 0)
+Credits.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Credits.TextColor3 = Color3.fromRGB(255, 255, 255)
+Credits.Text = [=[Credits]=]
+Credits.Font = Enum.Font.SourceSans
+Credits.BorderSizePixel = 0
+Credits.AnchorPoint = Vector2.new(0, 0)
+Credits.ZIndex = 1
+Credits.Visible = true
+Credits.Parent = Holder
+
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = Credits
+
+local Ex = Instance.new("Frame")
+Ex.Size = UDim2.new(0, 361, 0, 156)
+Ex.Position = UDim2.new(0.021052632480859756, 0, 0.18518517911434174, 0)
+Ex.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Ex.BorderSizePixel = 0
+Ex.AnchorPoint = Vector2.new(0, 0)
+Ex.ZIndex = 1
+Ex.Visible = false
+Ex.Parent = Holder
+
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = Ex
+
+local TextButton = Instance.new("TextButton")
+TextButton.Size = UDim2.new(0, 166, 0, 35)
+TextButton.Position = UDim2.new(0.5223174095153809, 0, 0.7352024912834167, 0)
+TextButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.Text = [=[Clear]=]
+TextButton.Font = Enum.Font.SourceSans
+TextButton.BorderSizePixel = 0
+TextButton.AnchorPoint = Vector2.new(0, 0)
+TextButton.ZIndex = 1
+TextButton.Visible = true
+TextButton.Parent = Ex
+
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = TextButton
+
+local TextButton = Instance.new("TextButton")
+TextButton.Size = UDim2.new(0, 174, 0, 35)
+TextButton.Position = UDim2.new(0.02146577648818493, 0, 0.7352024912834167, 0)
+TextButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.Text = [=[Execute]=]
+TextButton.Font = Enum.Font.SourceSans
+TextButton.BorderSizePixel = 0
+TextButton.AnchorPoint = Vector2.new(0, 0)
+TextButton.ZIndex = 1
+TextButton.Visible = true
+TextButton.Parent = Ex
+
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = TextButton
+
 local TextBox = Instance.new("TextBox")
 TextBox.Size = UDim2.new(0, 346, 0, 97)
-TextBox.Position = UDim2.new(0.021, 0, 0.038, 0)
-TextBox.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
+TextBox.Position = UDim2.new(0.02146577648818493, 0, 0.03846153989434242, 0)
+TextBox.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 TextBox.TextColor3 = Color3.fromRGB(255, 43, 237)
-TextBox.Text = ""
-TextBox.ClearTextOnFocus = false
-TextBox.MultiLine = true
-TextBox.Font = Enum.Font.Code
-TextBox.TextSize = 14
-TextBox.TextXAlignment = Enum.TextXAlignment.Left
-TextBox.TextYAlignment = Enum.TextYAlignment.Top
-TextBox.PlaceholderText = "Type there ur stupid script"
+TextBox.Text = [=[]=]
+TextBox.Font = Enum.Font.SourceSans
+TextBox.BorderSizePixel = 0
+TextBox.AnchorPoint = Vector2.new(0, 0)
+TextBox.ZIndex = 1
+TextBox.Visible = true
+TextBox.PlaceholderText = [=[Type there ur stupid script]=]
 TextBox.Parent = Ex
-local Box_Stroke = Instance.new("UIStroke")
-Box_Stroke.Color = Color3.fromRGB(255, 43, 237)
-Box_Stroke.Parent = TextBox
 
-local ClearBtn = Instance.new("TextButton")
-ClearBtn.Size = UDim2.new(0, 166, 0, 35)
-ClearBtn.Position = UDim2.new(0.522, 0, 0.735, 0)
-ClearBtn.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
-ClearBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
-ClearBtn.Text = "Clear"
-ClearBtn.Font = Enum.Font.SourceSans
-ClearBtn.TextSize = 16
-ClearBtn.Parent = Ex
-local Clear_Str = Instance.new("UIStroke")
-Clear_Str.Parent = ClearBtn
-ClearBtn.MouseButton1Click:Connect(function() TextBox.Text = "" end)
+local UIStroke = Instance.new("UIStroke")
+UIStroke.ZIndex = 1
+UIStroke.Parent = TextBox
 
-local ExecuteBtn = Instance.new("TextButton")
-ExecuteBtn.Size = UDim2.new(0, 174, 0, 35)
-ExecuteBtn.Position = UDim2.new(0.021, 0, 0.735, 0)
-ExecuteBtn.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
-ExecuteBtn.TextColor3 = Color3.fromRGB(0, 255, 0)
-ExecuteBtn.Text = "Execute"
-ExecuteBtn.Font = Enum.Font.SourceSansBold
-ExecuteBtn.TextSize = 16
-ExecuteBtn.Parent = Ex
-local Exec_Str = Instance.new("UIStroke")
-Exec_Str.Color = Color3.fromRGB(0, 255, 0)
-Exec_Str.Parent = ExecuteBtn
-ExecuteBtn.MouseButton1Click:Connect(function()
-    local c = TextBox.Text
-    if c ~= "" then
-        local success, err = pcall(function()
-            local func = loadstring(c)
-            if func then func() else warn("Ошибка компиляции кода!") end
-        end)
-        if not success then warn("Ошибка выполнения: " .. tostring(err)) end
-    end
-end)
+local RemoteEvent = Instance.new("RemoteEvent")
+RemoteEvent.Parent = Ex
 
--- СОЗДАНИЕ КНОПОК НАВИГАЦИИ (Переключение вкладок)
-local function createNavButton(name, text, pos, targetPage)
-    local btn = Instance.new("TextButton")
-    btn.Name = name
-    btn.Size = UDim2.new(0, 50, 0, 31)
-    btn.Position = pos
-    btn.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
-    btn.TextColor3 = Color3.fromRGB(255, 255, 255)
-    btn.Text = text
-    btn.Font = Enum.Font.SourceSansBold
-    btn.TextSize = 14
-    btn.BorderSizePixel = 0
-    btn.Parent = Holder
-    local stroke = Instance.new("UIStroke")
-    stroke.Color = Color3.fromRGB(80, 80, 80)
-    stroke.Parent = btn
-    btn.MouseButton1Click:Connect(function() showPage(targetPage) end)
-    return btn
-end
-
-createNavButton("Page1", "Page 1", UDim2.new(0, 0, 0.872, 0), P1)
-createNavButton("Page2", "Page 2", UDim2.new(0.152, 0, 0.872, 0), P2)
-createNavButton("Page3", "Page 3", UDim2.new(0.305, 0, 0.872, 0), P3)
-createNavButton("Page4", "Page 4", UDim2.new(0.457, 0, 0.872, 0), P4)
-createNavButton("Page5", "Page 5", UDim2.new(0.613, 0, 0.872, 0), P5)
-createNavButton("Page6", "Page 6", UDim2.new(0.765, 0, 0.872, 0), P6)
-createNavButton("Credits", "Creds", UDim2.new(0.918, 0, 0.872, 0), Cr)
-
--- СОЗДАНИЕ КНОПОК ФУНКЦИЙ НА СТРАНИЦЕ 1 (Для примера)
-local function createHackButton(parent, text, pos, callback)
-    local btn = Instance.new("TextButton")
-    btn.Size = UDim2.new(0, 107, 0, 35)
-    btn.Position = pos
-    btn.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
-    btn.TextColor3 = Color3.fromRGB(255, 255, 255)
-    btn.Text = text
-    btn.Font = Enum.Font.SourceSans
-    btn.TextSize = 14
-    btn.Parent = parent
-    local stroke = Instance.new("UIStroke")
-    stroke.Color = Color3.fromRGB(60, 60, 60)
-    stroke.Parent = btn
-    if callback then btn.MouseButton1Click:Connect(callback) end
-    return btn
-end
-
--- Пример привязки функции к кнопке Particles на Page 1
-createHackButton(P1, "Particles", UDim2.new(0.013, 0, 0.054, 0), function()
-    print("Вы нажали на Particles! Чит активирован.")
-    -- Сюда вы будете вставлять скрипты функций
-end)
-
-createHackButton(P1, "Decal spam", UDim2.new(0.353, 0, 0.053, 0))
-createHackButton(P1, "Team spam", UDim2.new(0.696, 0, 0.053, 0))
