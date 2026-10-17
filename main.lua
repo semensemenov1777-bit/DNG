@@ -1,19 +1,12 @@
---[=[
- d888b  db    db d888888b      .d888b.      db      db    db  .d8b.  
-88' Y8b 88    88   `88'        VP  `8D      88      88    88 d8' `8b 
-88      88    88    88            odD'      88      88    88 88ooo88 
-88  ooo 88    88    88          .88'        88      88    88 88~~~88 
-88. ~8~ 88b  d88   .88.        j88.         88booo. 88b  d88 88   88    @uniquadev
- Y888P  ~Y8888P' Y888888P      888888D      Y88888P ~Y8888P' YP   YP  CONVERTER 
-]=]
-
 local Players = game:GetService("Players")
 local LocalPlayer = Players.LocalPlayer
 local PlayerGui = LocalPlayer:WaitForChild("PlayerGui")
 
--- Защита от создания дубликатов при перезапуске
-if PlayerGui:FindFirstChild("DNG") then
-	PlayerGui["DNG"]:Destroy()
+-- Полная очистка всех старых копий DNG, если они остались от прошлых запусков
+for _, gui in ipairs(PlayerGui:GetChildren()) do
+	if gui.Name == "DNG" then
+		gui:Destroy()
+	end
 end
 
 local G2L = {};
@@ -40,7 +33,7 @@ G2L["3"]["Color"] = Color3.fromRGB(249, 36, 255);
 G2L["3"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
 G2L["3"]["LineJoinMode"] = Enum.LineJoinMode.Miter;
 
--- Функция создания кнопок переключения страниц
+-- Функция создания кнопок страниц
 local function createPageButton(parent, name, text, posX)
 	local btn = Instance.new("TextButton", parent)
 	btn.TextWrapped = true
@@ -129,7 +122,7 @@ local P5 = createPageFrame("P5")
 local P6 = createPageFrame("P6")
 local Cr = createPageFrame("Cr")
 
--- Текст-заглушка для страниц 1-6, чтобы они не были пустыми
+-- Текст для страниц 1-6
 for i, pageObj in ipairs({P1, P2, P3, P4, P5, P6}) do
 	local lbl = Instance.new("TextLabel", pageObj)
 	lbl.Size = UDim2.new(1, 0, 1, 0)
@@ -174,7 +167,7 @@ UserInputService.InputChanged:Connect(function(input)
 	end
 end)
 
--- Кнопка Credits (справа внизу)
+-- Кнопка Credits
 local CreditsBtn = Instance.new("TextButton", G2L["2"])
 CreditsBtn.Size = UDim2.new(0, 31, 0, 31)
 CreditsBtn.Position = UDim2.new(0.91842, 0, 0.87243, 0)
@@ -218,7 +211,7 @@ userLabel.TextSize = 22
 userLabel.Text = LocalPlayer.Name
 userLabel.FontFace = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal)
 
--- По умолчанию при запуске открываем Page 1
+-- Открываем первую страницу принудительно
 showPage("P1")
 
 return G2L["1"]
