@@ -11,7 +11,7 @@ local Players = game:GetService("Players")
 local LocalPlayer = Players.LocalPlayer
 local PlayerGui = LocalPlayer:WaitForChild("PlayerGui")
 
--- Защита от создания дубликатов при респавне, если скрипт в StarterCharacterScripts
+-- Защита от создания дубликатов при перезапуске
 if PlayerGui:FindFirstChild("DNG") then
 	PlayerGui["DNG"]:Destroy()
 end
@@ -40,7 +40,7 @@ G2L["3"]["Color"] = Color3.fromRGB(249, 36, 255);
 G2L["3"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
 G2L["3"]["LineJoinMode"] = Enum.LineJoinMode.Miter;
 
--- Функция создания страниц (для удобства)
+-- Функция создания кнопок переключения страниц
 local function createPageButton(parent, name, text, posX)
 	local btn = Instance.new("TextButton", parent)
 	btn.TextWrapped = true
@@ -65,7 +65,7 @@ local function createPageButton(parent, name, text, posX)
 	return btn
 end
 
--- Кнопки страниц
+-- Кнопки страниц (1-6)
 G2L["4"] = createPageButton(G2L["2"], "Page 1", "Page 1", 0)
 G2L["7"] = createPageButton(G2L["2"], "Page 2", "Page 2", 0.15263)
 G2L["a"] = createPageButton(G2L["2"], "Page 3", "Page 3", 0.30526)
@@ -91,15 +91,17 @@ G2L["17"]["Thickness"] = 3.7;
 G2L["17"]["Color"] = Color3.fromRGB(255, 0, 235);
 G2L["17"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
 
--- Функция переключения вкладок
+-- Словарь для хранения страниц
 local pages = {}
+
+-- Функция переключения вкладок
 local function showPage(pageName)
-	for _, page in pairs(pages) do
-		page.Visible = (page.Name == pageName)
+	for name, page in pairs(pages) do
+		page.Visible = (name == pageName)
 	end
 end
 
--- Создание фреймов страниц (P1 - P6, Cr, Ex)
+-- Создание контейнера для страниц
 local function createPageFrame(name)
 	local frame = Instance.new("Frame", G2L["2"])
 	frame.Visible = false
@@ -118,6 +120,7 @@ local function createPageFrame(name)
 	return frame
 end
 
+-- Создаем сами страницы
 local P1 = createPageFrame("P1")
 local P2 = createPageFrame("P2")
 local P3 = createPageFrame("P3")
@@ -125,9 +128,19 @@ local P4 = createPageFrame("P4")
 local P5 = createPageFrame("P5")
 local P6 = createPageFrame("P6")
 local Cr = createPageFrame("Cr")
-local Ex = createPageFrame("Ex")
 
--- Привязка кнопок страниц к переключению
+-- Текст-заглушка для страниц 1-6, чтобы они не были пустыми
+for i, pageObj in ipairs({P1, P2, P3, P4, P5, P6}) do
+	local lbl = Instance.new("TextLabel", pageObj)
+	lbl.Size = UDim2.new(1, 0, 1, 0)
+	lbl.BackgroundTransparency = 1
+	lbl.TextColor3 = Color3.fromRGB(255, 255, 255)
+	lbl.TextSize = 22
+	lbl.Text = "Страница " .. i
+	lbl.FontFace = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+end
+
+-- Привязка кнопок страниц
 G2L["4"].MouseButton1Click:Connect(function() showPage("P1") end)
 G2L["7"].MouseButton1Click:Connect(function() showPage("P2") end)
 G2L["a"].MouseButton1Click:Connect(function() showPage("P3") end)
@@ -135,10 +148,7 @@ G2L["d"].MouseButton1Click:Connect(function() showPage("P4") end)
 G2L["13"].MouseButton1Click:Connect(function() showPage("P5") end)
 G2L["10"].MouseButton1Click:Connect(function() showPage("P6") end)
 
--- Открытие первой страницы по умолчанию
-P1.Visible = true
-
--- Drag (Перетаскивание GUI мышкой/пальцем)
+-- Перетаскивание GUI (Drag)
 local UserInputService = game:GetService("UserInputService")
 local gui = G2L["2"]
 local dragging, dragStart, startPos
@@ -164,23 +174,51 @@ UserInputService.InputChanged:Connect(function(input)
 	end
 end)
 
--- Кнопка Credits
+-- Кнопка Credits (справа внизу)
 local CreditsBtn = Instance.new("TextButton", G2L["2"])
 CreditsBtn.Size = UDim2.new(0, 31, 0, 31)
 CreditsBtn.Position = UDim2.new(0.91842, 0, 0.87243, 0)
-CreditsBtn.Text = "Credits"
-CreditsBtn.TextColor3 = Color3.new(1,1,1)
-CreditsBtn.BackgroundColor3 = Color3.new(0,0,0)
+CreditsBtn.Text = "Cr"
+CreditsBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+CreditsBtn.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 CreditsBtn.TextScaled = true
+CreditsBtn.BorderSizePixel = 0
+
+local creditStroke = Instance.new("UIStroke", CreditsBtn)
+creditStroke.Thickness = 3
+creditStroke.Color = Color3.fromRGB(255, 15, 255)
+creditStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+
 CreditsBtn.MouseButton1Click:Connect(function() showPage("Cr") end)
 
--- Приветствие в Credits
+-- Оформление вкладки Credits
+local creditTitle = Instance.new("TextLabel", Cr)
+creditTitle.Size = UDim2.new(1, 0, 0, 40)
+creditTitle.Position = UDim2.new(0, 0, 0.1, 0)
+creditTitle.BackgroundTransparency = 1
+creditTitle.TextColor3 = Color3.fromRGB(255, 0, 235)
+creditTitle.TextSize = 24
+creditTitle.Text = "CREDITS"
+creditTitle.FontFace = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+
+local creditDesc = Instance.new("TextLabel", Cr)
+creditDesc.Size = UDim2.new(1, 0, 0, 30)
+creditDesc.Position = UDim2.new(0, 0, 0.4, 0)
+creditDesc.BackgroundTransparency = 1
+creditDesc.TextColor3 = Color3.fromRGB(200, 200, 200)
+creditDesc.TextSize = 18
+creditDesc.Text = "Developer / User:"
+
 local userLabel = Instance.new("TextLabel", Cr)
-userLabel.Size = UDim2.new(0, 167, 0, 34)
-userLabel.Position = UDim2.new(0.24654, 0, -0.01282, 0)
+userLabel.Size = UDim2.new(1, 0, 0, 40)
+userLabel.Position = UDim2.new(0, 0, 0.6, 0)
 userLabel.BackgroundTransparency = 1
-userLabel.TextColor3 = Color3.new(1,1,1)
-userLabel.TextScaled = true
+userLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+userLabel.TextSize = 22
 userLabel.Text = LocalPlayer.Name
+userLabel.FontFace = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+
+-- По умолчанию при запуске открываем Page 1
+showPage("P1")
 
 return G2L["1"]
