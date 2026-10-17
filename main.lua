@@ -7937,4 +7937,100 @@ local script = G2L["f6"];
 end;
 task.spawn(C_f6);
 
+
+-- FIX: robust page navigation and window dragging.
+-- This patch intentionally only repairs UI behavior; server-side actions
+-- require a legitimate server implementation and are not created here.
+local function installUiFixes()
+    local gui = G2L["1"]
+    local holder = G2L["2"]
+    if not gui or not holder then return end
+
+    local pageNames = {"P1", "P2", "P3", "P4", "P5", "P6", "Cr", "Ex"}
+    local function showPage(targetName)
+        for _, name in ipairs(pageNames) do
+            local page = holder:FindFirstChild(name)
+            if page and page:IsA("GuiObject") then
+                page.Visible = (name == targetName)
+            end
+        end
+    end
+
+    local pageButtons = {
+        ["Page 1"] = "P1",
+        ["Page 2"] = "P2",
+        ["Page 3"] = "P3",
+        ["Page 4"] = "P4",
+        ["Page 5"] = "P5",
+        ["Page 6"] = "P6",
+        ["Credits"] = "Cr",
+    }
+
+    for buttonName, pageName in pairs(pageButtons) do
+        local button = holder:FindFirstChild(buttonName)
+        if button and button:IsA("TextButton") then
+            button.Activated:Connect(function()
+                showPage(pageName)
+            end)
+        end
+    end
+
+    -- Make sure only one content page is visible initially.
+    local hasVisiblePage = false
+    for _, name in ipairs(pageNames) do
+        local page = holder:FindFirstChild(name)
+        if page and page:IsA("GuiObject") and page.Visible then
+            if hasVisiblePage then
+                page.Visible = false
+            else
+                hasVisiblePage = true
+            end
+        end
+    end
+    if not hasVisiblePage then
+        showPage("P1")
+    end
+
+    -- Drag the window from its title bar; buttons remain clickable.
+    local UserInputService = game:GetService("UserInputService")
+    local title = holder:FindFirstChild("Title")
+    if title and title:IsA("GuiObject") then
+        title.Active = true
+        local dragging = false
+        local dragStart
+        local startPosition
+
+        title.InputBegan:Connect(function(input)
+            if input.UserInputType == Enum.UserInputType.MouseButton1
+                or input.UserInputType == Enum.UserInputType.Touch then
+                dragging = true
+                dragStart = input.Position
+                startPosition = holder.Position
+            end
+        end)
+
+        title.InputEnded:Connect(function(input)
+            if input.UserInputType == Enum.UserInputType.MouseButton1
+                or input.UserInputType == Enum.UserInputType.Touch then
+                dragging = false
+            end
+        end)
+
+        UserInputService.InputChanged:Connect(function(input)
+            if not dragging then return end
+            if input.UserInputType ~= Enum.UserInputType.MouseMovement
+                and input.UserInputType ~= Enum.UserInputType.Touch then
+                return
+            end
+            local delta = input.Position - dragStart
+            holder.Position = UDim2.new(
+                startPosition.X.Scale, startPosition.X.Offset + delta.X,
+                startPosition.Y.Scale, startPosition.Y.Offset + delta.Y
+            )
+        end)
+    end
+end
+
+task.defer(installUiFixes)
+
 return G2L["1"], require;
