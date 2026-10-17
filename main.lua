@@ -2,7 +2,7 @@ local Players = game:GetService("Players")
 local LocalPlayer = Players.LocalPlayer
 local PlayerGui = LocalPlayer:WaitForChild("PlayerGui")
 
--- Полная очистка всех старых копий DNG, если они остались от прошлых запусков
+-- Очистка старых копий DNG для предотвращения дублирования
 for _, gui in ipairs(PlayerGui:GetChildren()) do
 	if gui.Name == "DNG" then
 		gui:Destroy()
@@ -113,7 +113,7 @@ local function createPageFrame(name)
 	return frame
 end
 
--- Создаем сами страницы
+-- Создаем страницы 1-6 и Credits (Cr)
 local P1 = createPageFrame("P1")
 local P2 = createPageFrame("P2")
 local P3 = createPageFrame("P3")
@@ -122,7 +122,7 @@ local P5 = createPageFrame("P5")
 local P6 = createPageFrame("P6")
 local Cr = createPageFrame("Cr")
 
--- Текст для страниц 1-6
+-- Добавляем текст на страницы 1-6
 for i, pageObj in ipairs({P1, P2, P3, P4, P5, P6}) do
 	local lbl = Instance.new("TextLabel", pageObj)
 	lbl.Size = UDim2.new(1, 0, 1, 0)
@@ -133,7 +133,7 @@ for i, pageObj in ipairs({P1, P2, P3, P4, P5, P6}) do
 	lbl.FontFace = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal)
 end
 
--- Привязка кнопок страниц
+-- Привязка кнопок страниц к переключению
 G2L["4"].MouseButton1Click:Connect(function() showPage("P1") end)
 G2L["7"].MouseButton1Click:Connect(function() showPage("P2") end)
 G2L["a"].MouseButton1Click:Connect(function() showPage("P3") end)
@@ -184,34 +184,16 @@ creditStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 
 CreditsBtn.MouseButton1Click:Connect(function() showPage("Cr") end)
 
--- Оформление вкладки Credits
-local creditTitle = Instance.new("TextLabel", Cr)
-creditTitle.Size = UDim2.new(1, 0, 0, 40)
-creditTitle.Position = UDim2.new(0, 0, 0.1, 0)
-creditTitle.BackgroundTransparency = 1
-creditTitle.TextColor3 = Color3.fromRGB(255, 0, 235)
-creditTitle.TextSize = 24
-creditTitle.Text = "CREDITS"
-creditTitle.FontFace = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal)
-
-local creditDesc = Instance.new("TextLabel", Cr)
-creditDesc.Size = UDim2.new(1, 0, 0, 30)
-creditDesc.Position = UDim2.new(0, 0, 0.4, 0)
-creditDesc.BackgroundTransparency = 1
-creditDesc.TextColor3 = Color3.fromRGB(200, 200, 200)
-creditDesc.TextSize = 18
-creditDesc.Text = "Developer / User:"
-
+-- Возвращенный оригинальный вид вкладки Credits (только ник игрока)
 local userLabel = Instance.new("TextLabel", Cr)
-userLabel.Size = UDim2.new(1, 0, 0, 40)
-userLabel.Position = UDim2.new(0, 0, 0.6, 0)
+userLabel.Size = UDim2.new(0, 167, 0, 34)
+userLabel.Position = UDim2.new(0.24654, 0, -0.01282, 0)
 userLabel.BackgroundTransparency = 1
-userLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-userLabel.TextSize = 22
+userLabel.TextColor3 = Color3.new(1, 1, 1)
+userLabel.TextScaled = true
 userLabel.Text = LocalPlayer.Name
-userLabel.FontFace = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal)
 
--- Открываем первую страницу принудительно
+-- По умолчанию открываем Page 1 при запуске
 showPage("P1")
 
 return G2L["1"]
